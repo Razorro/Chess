@@ -1,0 +1,58 @@
+syntax = "proto3";
+package sync;
+
+enum Color {
+    white = 0;
+    black = 1;
+}
+
+enum MessageID
+{
+    padding=0;
+    match=1;
+    move=2;
+    cancelMatch=3;
+    promote=5;
+}
+
+message Match {
+    bool random=1;
+    int32 pickColor=2;
+}
+
+message MatchResp {
+    bool ret=1;
+}
+
+message CancelMatch {}
+message CancelMatchResp {
+    bool ret=1;
+}
+
+message GameSetupNotify {
+    Color side=1;
+}
+
+message GameReady {}
+
+message GameReadyResp {
+    bool ret=1;
+}
+
+message MovePiece {
+    int32 originX = 1;
+    int32 originY = 2;
+    int32 X=3;
+    int32 Y=4;
+    Color color=5;
+}
+
+message MoveResp {
+    bool ret=1;
+}
+
+message Promote {
+    string tag=1;
+    int32 x=2;
+    int32 y=3;
+}
