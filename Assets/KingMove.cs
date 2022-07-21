@@ -118,32 +118,39 @@ public class KingMove : PieceMove
             return;
 
         var curPosUnit = calculator.GetUnitFromAxisScale(transform.localPosition.x, transform.localPosition.y);
+        Debug.LogFormat("Check castling point: {0} {1}", curPosUnit.Item1, curPosUnit.Item2);
         if (color == Color.white && (curPosUnit.Item1 != 0 || curPosUnit.Item2 != -3))
             return;
         if (color == Color.black && (curPosUnit.Item1 != 0 || curPosUnit.Item2 != 4))
             return;
 
-        bool leftShift = false, rightShift = false;
         // rook status check
+        bool leftShift, rightShift;
         leftShift = CheckRookCastlingCond(0, color);
         rightShift = CheckRookCastlingCond(1, color);
+        Debug.LogFormat("left shift: {0}, right shift: {1}", leftShift, rightShift);
 
         // empty path check
         int i = leftShift ? -2 : curPosUnit.Item1 + 1;
         int j = rightShift ? 3 : curPosUnit.Item1 - 1;
-        //Debug.LogFormat("from left {0} to rigint {1}", i, j);
+        Debug.LogFormat("from left {0} to rigint {1}", i, j);
         for (; i <= j; ++i)
         {
+            if (i == curPosUnit.Item1)
+                continue;
+
             if(calculator.IsAttacked(new Tuple<int, int>(i, curPosUnit.Item2), attaker) || !calculator.CheckGridEmpty(new Tuple<int, int>(i, curPosUnit.Item2)))
             {
                 if (i < curPosUnit.Item1)
                 {
+                    Debug.LogFormat("left shift invalid at {0} {1}", i, curPosUnit.Item2);
                     i = curPosUnit.Item1 + 1;
                     leftShift = false;
                     continue;
                 }
                 else
                 {
+                    Debug.LogFormat("right shift invalid at {0} {1}", i, curPosUnit.Item2);
                     rightShift = false;
                     break;
                 }

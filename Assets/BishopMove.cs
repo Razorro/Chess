@@ -27,33 +27,60 @@ public class BishopMove : PieceMove
     {
         for (int i = 2, j = 2; calculator.CheckValidAxis(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit, color); i += 2, j += 2)
         {
-            possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
             var gridUnit = calculator.GetUnitFromAxisScale(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit);
-            if (calculator.CheckGridEmpty(gridUnit) == false && calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            if(calculator.CheckGridEmpty(gridUnit))
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            else if (calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            {
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+                break;
+            }
+            else
                 break;
         }
 
         for (int i = -2, j = 2; calculator.CheckValidAxis(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit, color); i -= 2, j += 2)
         {
-            possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            
             var gridUnit = calculator.GetUnitFromAxisScale(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit);
-            if (calculator.CheckGridEmpty(gridUnit) == false && calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            if (calculator.CheckGridEmpty(gridUnit))
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            else if (calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            {
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+                break;
+            }
+            else
                 break;
         }
 
         for (int i = 2, j = -2; calculator.CheckValidAxis(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit, color); i += 2, j -= 2)
         {
-            possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            
             var gridUnit = calculator.GetUnitFromAxisScale(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit);
-            if (calculator.CheckGridEmpty(gridUnit) == false && calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            if (calculator.CheckGridEmpty(gridUnit))
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            else if (calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            {
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+                break;
+            }
+            else
                 break;
         }
 
         for (int i = -2, j = -2; calculator.CheckValidAxis(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit, color); i -= 2, j -= 2)
         {
-            possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            
             var gridUnit = calculator.GetUnitFromAxisScale(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit);
-            if (calculator.CheckGridEmpty(gridUnit) == false && calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            if (calculator.CheckGridEmpty(gridUnit))
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+            else if (calculator.boardPieces[gridUnit].GetComponent<MeshRenderer>().material.color != color)
+            {
+                possibleAxis.Add(new Tuple<float, float>(transform.localPosition.x + i * calculator.xScaleUnit, transform.localPosition.y + j * calculator.yScaleUnit));
+                break;
+            }
+            else
                 break;
         }
     }
