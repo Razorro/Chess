@@ -46,8 +46,8 @@ public class CanvasManager : MonoBehaviour
     public void ShowGameEndInfo(bool isWinner)
     {
         if (isWinner)
-            UI[3].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "You win!";
+            UI[3].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "ƒ„”Æ¡À!";
         else
-            UI[3].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "You loss!";
+            UI[3].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "ƒ„ ‰¡À!";
     }
 }

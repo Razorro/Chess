@@ -15,14 +15,12 @@ public class PromoteClick : MonoBehaviour
     {
         btn = GetComponent<Button>();
         text = GetComponentInChildren<TextMeshProUGUI>();
-
-        btn.onClick.AddListener(Click);
     }
 
-    void Click()
+    public void Click(string tag)
     {
-        mark.PawnPromote(text.text);
+        mark.PawnPromote(tag);
 
-        mark.SyncPromoteTo(text.text, mark.touch);
+        mark.SyncPromoteTo(tag, mark.touch);
     }
 }

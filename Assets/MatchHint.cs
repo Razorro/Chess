@@ -5,7 +5,7 @@ using UnityEngine;
 public class MatchHint : MonoBehaviour
 {
     private TMPro.TextMeshProUGUI text;
-    private string prefix = "match ";
+    private string prefix = "匹配";
     private string suffix;
     private string dot = "";
     private float nextFlushDot;
@@ -37,10 +37,10 @@ public class MatchHint : MonoBehaviour
         dot = "";
 
         if (side == 0)
-            suffix = "with white color";
+            suffix = "[白色方]";
         else if (side == 1)
-            suffix = "with black color";
+            suffix = "[黑色方]";
         else
-            suffix = "in random mode";
+            suffix = "[随机方]";
     }
 }

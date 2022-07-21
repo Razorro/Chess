@@ -102,10 +102,9 @@ public class NetPacket : MonoBehaviour
 
             Buffer.BlockCopy(readBuffer, 4 + size, readBuffer, 0, ready - 4 - size);
             ready = ready - 4 - size;
-        }
 
-        if (packets.Count > 0)
             return true;
+        }
 
         return false;   
     }
