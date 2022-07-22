@@ -112,9 +112,6 @@ public class NetPacket : MonoBehaviour
 
     public void DispatchMessage()
     {
-        if (packets.Count == 0)
-            return;
-
         lock(packetLock)
         {
             foreach (var packet in packets)
