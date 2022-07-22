@@ -9,7 +9,8 @@ using System.Text;
 public class NetPacket : MonoBehaviour
 {
     [SerializeField]private TCPConn conn;
-    
+
+    private readonly object packetLock = new object();
     private byte[] readBuffer = new byte[4096];
     private int ready = 0;
     private List<Tuple<ushort, byte[]>> packets = new List<Tuple<ushort, byte[]>>();
@@ -95,7 +96,7 @@ public class NetPacket : MonoBehaviour
             var msgBytes = new byte[size];
             Buffer.BlockCopy(readBuffer, 4, msgBytes, 0, size);
 
-            lock(packets)
+            lock(packetLock)
             {
                 packets.Add(new Tuple<ushort, byte[]>(protoID, msgBytes));
             }
@@ -114,7 +115,7 @@ public class NetPacket : MonoBehaviour
         if (packets.Count == 0)
             return;
 
-        lock(packets)
+        lock(packetLock)
         {
             foreach (var packet in packets)
             {
